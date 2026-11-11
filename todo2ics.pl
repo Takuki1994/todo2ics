@@ -441,6 +441,7 @@ sub make_calendar {
             'DTSTAMP:' . $dtstamp,
             'DTSTART;VALUE=DATE:' . $event->{start},
             'DTEND;VALUE=DATE:' . $event->{end},
+            'TRANSP:TRANSPARENT',
             'SUMMARY:' . escape_ics_text($event->{summary});
         if (@{ $event->{categories} }) {
             push @lines, 'CATEGORIES:' . join(
