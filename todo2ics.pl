@@ -345,7 +345,7 @@ sub build_event {
     my $summary_date_index = 0;
     $summary_date_index++ while $summary_date_index <= $#tokens && $tokens[$summary_date_index] eq '';
     $summary_date_index++
-        if defined $tokens[$summary_date_index] && $tokens[$summary_date_index] =~ /\A\([ABC]\)\z/;
+        if defined $tokens[$summary_date_index] && $tokens[$summary_date_index] =~ /\A\([a-zA-Z]\)\z/;
     $summary_date_index = undef
         unless defined $tokens[$summary_date_index]
             && parse_date($tokens[$summary_date_index]);
@@ -355,7 +355,7 @@ sub build_event {
         my $token = $tokens[$index];
         next if $token eq '@calendar' || $token eq '@scheduled';
         next if $token =~ /\A(?:cat|t|due):/;
-        next if $token =~ /\A\([ABC]\)\z/;
+        next if $token =~ /\A\([a-zA-Z]\)\z/;
         next if $token =~ /\A\+/;
         push @summary_parts, $token;
     }
